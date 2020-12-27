@@ -26,6 +26,7 @@ router.post('/login', (req, res, next) => {
                     res.json({
                         error: err
                     });
+                    send.sendStatus(500);
                     return;
                 }
                 // if the password matches, generate an access token and send it to the user
@@ -41,6 +42,7 @@ router.post('/login', (req, res, next) => {
                     res.json({
                         message: 'The password given is incorrect.'
                     });
+                    res.sendStatus(401);
                 }
             });
         }
@@ -48,6 +50,7 @@ router.post('/login', (req, res, next) => {
             res.json({
                 message: 'No user is associated with this email address.'
             });
+            res.sendStatus(401);
         }
     })
 
