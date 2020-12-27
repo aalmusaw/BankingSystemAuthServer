@@ -14,17 +14,19 @@ router.post('/login', (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     // search for users in the database with the same email given by the client
-    User.find({email: email})
+    User.findOne({email: email})
     .then(user => {
         // if the email given matches one in the database
         if (user) {
             // check if the user unencrypted password is the same as the given one
+            console.log(`mathced user: ${user}`);
             bycrypt.compare(password, user.password, (err, same) => {
                 // if an error occur along the way, print it
                 if (err) {
                     res.json({
                         error: err
                     });
+                    return;
                 }
                 // if the password matches, generate an access token and send it to the user
                 if (same) {

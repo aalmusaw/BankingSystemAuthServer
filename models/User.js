@@ -5,6 +5,9 @@ const User = new Schema(
     {
         email: String,
         password: String
+    },
+    {
+        collection: 'user'
     }
 );
 
