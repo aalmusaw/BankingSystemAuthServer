@@ -27,13 +27,28 @@ router.post('/login', (req, res, next) => {
                     });
                     return;
                 }
-                // if the password matches, generate an access token and send it to the user
+                // if the password matches, generate access and refresh tokens and send them to the user
                 if (same) {
-                    const token = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '900s'});
-                    res.json({
-                        message: 'Login Successful',
-                        accessToken: token
+                    const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10s'});
+                    const refreshToken = jwt.sign({email: user.email}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1h'});
+                    // save the refresh token into the DB
+                    const refreshTokens = user.refreshTokens;
+                    refreshTokens.push(refreshToken);
+                    User.updateOne({email: email}, {refreshTokens: refreshTokens}, (err, raw)=> {
+                        if (err) {
+                            res.status(500).json({
+                                message: "Failed to update refresh token"
+                            });
+                        }
+                        else {
+                            res.json({
+                                message: 'Login Successful',
+                                accessToken: accessToken,
+                                refreshToken: refreshToken
+                            });
+                        }
                     });
+
                 }
                 // if the password does not match, let the client know
                 else {
