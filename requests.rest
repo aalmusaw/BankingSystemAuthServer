@@ -11,7 +11,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/resetPass
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTczMDM1LCJleHAiOjE2MDkxNzM5MzV9.TwKDXyKFwoOsNo6FtZbd084OO2SS9ntoDp7JBIrn44E 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTc1MzM3LCJleHAiOjE2MDkxNzYyMzd9.aY094pSDSHpWdAJe0b6UfPIAwJiVmzPzE7Lrk4KhvJ8
 
 {
     "email": "almuali699@gmail.com",
