@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const RefreshToken = require('../models/RefreshToken');
 
 const router = express.Router();
-const ACCESS_TOKEN_EXPIRATION_PERIOD = '10s'
+const ACCESS_TOKEN_EXPIRATION_PERIOD = '1m'
 
 router.post('/refreshToken', (req, res, next) => {
     const refreshToken = req.body.refreshToken;
@@ -16,7 +16,7 @@ router.post('/refreshToken', (req, res, next) => {
     }
     else {
         // check if the provided refresh token is in the DB
-        RefreshToken.exists({token: refreshToken}, (err, matchExists) {
+        RefreshToken.exists({token: refreshToken}, (err, matchExists) => {
             if (err) {
                 res.sendStatus(500);
                 return;
@@ -44,3 +44,5 @@ router.post('/refreshToken', (req, res, next) => {
     }
 
 });
+
+module.exports = router;

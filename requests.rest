@@ -4,16 +4,26 @@ Content-Type: application/json
 {
     "email":"almuali699@gmail.com",
     "password":"password"
-
 }
 
 ###
 
 POST http://localhost:3000/resetPass
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg4NTg4LCJleHAiOjE2MDkxODg1OTh9.0Liwr8O33B2CBQ6ZeWlb6qYOR7DlK0mny2-GQd6o7Ng
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTc1MzM3LCJleHAiOjE2MDkxNzYyMzd9.aY094pSDSHpWdAJe0b6UfPIAwJiVmzPzE7Lrk4KhvJ8
 
 {
-    "email": "almuali699@gmail.com",
-    "password":"password"
+    "password": "password"
 }
+
+###
+
+POST http://localhost:3000/refreshToken
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg4NTA0LCJleHAiOjE2MDkxODg1MjR9.riF9UOzVdUM29gOhhgfz9KfVkMHxb7UqodL7JYdBP-I"
+}
+
+###
+

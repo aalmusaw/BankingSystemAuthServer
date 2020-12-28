@@ -5,6 +5,7 @@ const User = require('./models/User');
 const authenticate = require('./middleware/authenticate');
 
 const loginRouter = require('./routes/login');
+const refreshTokenRouter = require('./routes/refreshToken');
 const restPassRouter = require('./routes/resetPass');
 
 
@@ -25,6 +26,7 @@ const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use('/', loginRouter);
+app.use('/', refreshTokenRouter);
 app.use('/', authenticate, restPassRouter);
 
 // set up port

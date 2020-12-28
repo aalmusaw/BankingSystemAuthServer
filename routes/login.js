@@ -8,8 +8,8 @@ const User = require('../models/User');
 const RefreshToken = require('../models/RefreshToken')
 
 const router = express.Router();
-const ACCESS_TOKEN_EXPIRATION_PERIOD = '10s'
-const REFRESH_TOKEN_EXPIRATION_PERIOD = '20s'
+const ACCESS_TOKEN_EXPIRATION_PERIOD = '1m'
+const REFRESH_TOKEN_EXPIRATION_PERIOD = '2h'
 
 
 router.post('/login', (req, res, next) => {
