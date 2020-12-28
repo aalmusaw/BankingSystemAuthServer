@@ -19,38 +19,49 @@ router.post('/login', (req, res, next) => {
         // if the email given matches one in the database
         if (user) {
             // check if the user unencrypted password is the same as the given one
-            console.log(`mathced user: ${user}`);
             bycrypt.compare(password, user.password, (err, same) => {
                 // if an error occur along the way, print it
                 if (err) {
-                    res.json({
+                    res.status(500).json({
                         error: err
                     });
-                    send.sendStatus(500);
                     return;
                 }
-                // if the password matches, generate an access token and send it to the user
+                // if the password matches, generate access and refresh tokens and send them to the user
                 if (same) {
-                    const token = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '900s'});
-                    res.json({
-                        message: 'Login Successful',
-                        accessToken: token
+                    const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10s'});
+                    const refreshToken = jwt.sign({email: user.email}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1h'});
+                    // save the refresh token into the DB
+                    const refreshTokens = user.refreshTokens;
+                    refreshTokens.push(refreshToken);
+                    User.updateOne({email: email}, {refreshTokens: refreshTokens}, (err, raw)=> {
+                        if (err) {
+                            res.status(500).json({
+                                message: "Failed to update refresh token"
+                            });
+                        }
+                        else {
+                            res.json({
+                                message: 'Login Successful',
+                                accessToken: accessToken,
+                                refreshToken: refreshToken
+                            });
+                        }
                     });
+
                 }
                 // if the password does not match, let the client know
                 else {
-                    res.json({
+                    res.status(401).json({
                         message: 'The password given is incorrect.'
                     });
-                    res.sendStatus(401);
                 }
             });
         }
         else {
-            res.json({
+            res.status(401).json({
                 message: 'No user is associated with this email address.'
             });
-            res.sendStatus(401);
         }
     })
 
