@@ -1,14 +1,12 @@
 require('dotenv').config();
 
 const express = require('express');
-const jwt = require('jsonwebtoken');
 
 const RefreshToken = require('../models/RefreshToken');
 
 const router = express.Router();
-const ACCESS_TOKEN_EXPIRATION_PERIOD = '1m'
 
-router.post('/refreshToken', (req, res, next) => {
+router.delete('/logout', (req, res, next) => {
     const refreshToken = req.body.refreshToken;
     if (!refreshToken) {
         res.sendStatus(400);
@@ -20,17 +18,14 @@ router.post('/refreshToken', (req, res, next) => {
                 res.sendStatus(500);
                 return;
             }
+            // if it exists, delete it from the DB and return HTTP 204
             if (matchExists) {
-                jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+                RefreshToken.deleteOne({token: refreshToken}, (err)=> {
                     if (err) {
-                        res.sendStatus(401);
+                        res.sendStatus(500);
                     }
                     else {
-                        const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET,
-                             {expiresIn: ACCESS_TOKEN_EXPIRATION_PERIOD});
-                        res.json({
-                            accessToken: accessToken
-                        });
+                        res.sendStatus(204);
                     }
                 });
             }

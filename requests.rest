@@ -9,7 +9,7 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3000/resetPass
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg4NTg4LCJleHAiOjE2MDkxODg1OTh9.0Liwr8O33B2CBQ6ZeWlb6qYOR7DlK0mny2-GQd6o7Ng
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5ODg2LCJleHAiOjE2MDkxODk5NDZ9.mEcf5gyHvsoO1W14k-Eq32ZiSGonZuyE0kH3CaMzqOU
 Content-Type: application/json
 
 {
@@ -22,8 +22,15 @@ POST http://localhost:3000/refreshToken
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg4NTA0LCJleHAiOjE2MDkxODg1MjR9.riF9UOzVdUM29gOhhgfz9KfVkMHxb7UqodL7JYdBP-I"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5OTM4LCJleHAiOjE2MDkxOTcxMzh9.3OzYnyeEe2IhFFWe6ZZp1pBeikFLcDFzQKpmQO-gW-w"
 }
 
 ###
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5OTM4LCJleHAiOjE2MDkxOTcxMzh9.3OzYnyeEe2IhFFWe6ZZp1pBeikFLcDFzQKpmQO-gW-w"
+}
 
