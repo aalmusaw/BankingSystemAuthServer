@@ -8,10 +8,9 @@ const authenticate = (req, res, next) => {
         next();
     }
     catch(err) {
-        res.json({
+        res.status(403).json({
             message: 'Authentication failed.'
         });
-        res.sendStatus(403);
     }
 };
 
