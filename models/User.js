@@ -5,7 +5,6 @@ const User = new Schema(
     {
         email: String,
         password: String,
-        refreshTokens: [String]
     },
     {
         collection: 'user'

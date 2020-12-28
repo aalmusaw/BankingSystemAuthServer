@@ -5,8 +5,11 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
+const RefreshToken = require('../models/RefreshToken')
 
 const router = express.Router();
+const ACCESS_TOKEN_EXPIRATION_PERIOD = '10s'
+const REFRESH_TOKEN_EXPIRATION_PERIOD = '20s'
 
 
 router.post('/login', (req, res, next) => {
@@ -29,26 +32,18 @@ router.post('/login', (req, res, next) => {
                 }
                 // if the password matches, generate access and refresh tokens and send them to the user
                 if (same) {
-                    const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '10s'});
-                    const refreshToken = jwt.sign({email: user.email}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '1h'});
+                    const accessToken = jwt.sign({email: user.email}, process.env.ACCESS_TOKEN_SECRET,
+                         {expiresIn: ACCESS_TOKEN_EXPIRATION_PERIOD});
+                    const refreshToken = jwt.sign({email: user.email}, process.env.REFRESH_TOKEN_SECRET,
+                         {expiresIn: REFRESH_TOKEN_EXPIRATION_PERIOD});
                     // save the refresh token into the DB
-                    const refreshTokens = user.refreshTokens;
-                    refreshTokens.push(refreshToken);
-                    User.updateOne({email: email}, {refreshTokens: refreshTokens}, (err, raw)=> {
-                        if (err) {
-                            res.status(500).json({
-                                message: "Failed to update refresh token"
-                            });
-                        }
-                        else {
-                            res.json({
-                                message: 'Login Successful',
-                                accessToken: accessToken,
-                                refreshToken: refreshToken
-                            });
-                        }
+                    const refreshTokenDoc = new RefreshToken({token: refreshToken});
+                    refreshTokenDoc.save();
+                    res.json({
+                        message: 'Login Successful',
+                        accessToken: accessToken,
+                        refreshToken: refreshToken
                     });
-
                 }
                 // if the password does not match, let the client know
                 else {
