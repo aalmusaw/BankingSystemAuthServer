@@ -2,8 +2,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email":"almuali699@gmail.com",
-    "password":"password"
+    "email":"abc@yahoo.com",
+    "password":"kamigamiX0!"
 }
 
 ###
@@ -22,7 +22,7 @@ POST http://localhost:3000/refreshToken
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5OTM4LCJleHAiOjE2MDkxOTcxMzh9.3OzYnyeEe2IhFFWe6ZZp1pBeikFLcDFzQKpmQO-gW-w"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTkwMTMyLCJleHAiOjE2MDkxOTczMzJ9.a9MVEmbPLqYLhwNISVwxteOCtUZq79RmF-6Aaf2Ijqw"
 }
 
 ###
@@ -31,6 +31,6 @@ DELETE http://localhost:3000/logout
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5OTM4LCJleHAiOjE2MDkxOTcxMzh9.3OzYnyeEe2IhFFWe6ZZp1pBeikFLcDFzQKpmQO-gW-w"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTkwNDI1LCJleHAiOjE2MDkxOTc2MjV9.80m5tKhk1wvpT1yjhyKUmsiZn4BNOmGeNKuiPBJ6P_g"
 }
 

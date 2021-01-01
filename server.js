@@ -2,7 +2,10 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const User = require('./models/User');
+
 
 const authenticate = require('./middleware/authenticate');
 
@@ -33,6 +36,7 @@ mongoose.connection.once('open', () => {
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cors())
 app.use('/', loginRouter);
 app.use('/', logoutRouter);
 app.use('/', refreshTokenRouter);
