@@ -1,13 +1,13 @@
+### login user -- need valid credentials
 POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email":"abc@yahoo.com",
-    "password":"kamigamiX0!"
+    "email":"almuali699@gmail.com",
+    "password":"password"
 }
 
-###
-
+### reset password
 POST http://localhost:3000/resetPass
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTg5ODg2LCJleHAiOjE2MDkxODk5NDZ9.mEcf5gyHvsoO1W14k-Eq32ZiSGonZuyE0kH3CaMzqOU
 Content-Type: application/json
@@ -16,17 +16,17 @@ Content-Type: application/json
     "password": "password"
 }
 
-###
-
+### pass the refresh token supplied upon login to generate more access tokens
+### you need the access tokens for actions that require authentication
 POST http://localhost:3000/refreshToken
 Content-Type: application/json
 
 {
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5MTkwMTMyLCJleHAiOjE2MDkxOTczMzJ9.a9MVEmbPLqYLhwNISVwxteOCtUZq79RmF-6Aaf2Ijqw"
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsbXVhbGk2OTlAZ21haWwuY29tIiwiaWF0IjoxNjA5NjE4MTgxLCJleHAiOjE2MDk2MjUzODF9.Wdk-MV11YuE8cAaHESD_fOHMg8OYpNhwclTD6Guuj80"
 }
 
-###
-
+### pass the refresh token so that it is invalidated and cannot be used to generate
+### more access tokens
 DELETE http://localhost:3000/logout
 Content-Type: application/json
 
