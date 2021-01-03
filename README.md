@@ -19,7 +19,7 @@
 1. In the first 3, navigate to the local repositories and run `npm install` so that node package manager installs the dependencies.
 1. Populate the .env files with values:
     1. `DB_CONNECTION_URI=` where the right-hand side is the URI of the database that stores your application collections.
-    1. `ACCESS_TOKEN_SECRET=` where the right-hand side is a very secure key (please generate it randomly and make sure it is large).
+    1. `ACCESS_TOKEN_SECRET=` where the right-hand side is a very secure key (please generate it randomly and make sure it is large). *This **MUST** be the same across all backend repositories.*
     1. `REFRESH_TOKEN_SECRET=` same as above.
 1. Install angular if you have not. Details are [here](https://angular.io/guide/setup-local).
 1. Register the first customer, set them up with a banking account, then give them login credentials:
