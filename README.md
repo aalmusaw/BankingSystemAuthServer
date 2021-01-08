@@ -40,5 +40,8 @@ The overall architecture of the banking system for the hypothetical company, ALP
 
 Here, we are using a microservices architecture whereby we use three RESTful-like backend servers, one database server, and a client.
 
+## Video Walkthrough
+[Click here](https://youtu.be/K6kIj30CsiM) for a video walkthrough of the project.
+
 
 
